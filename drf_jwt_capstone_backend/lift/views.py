@@ -1,8 +1,8 @@
 from django.http import request
 from django.http.response import Http404
 from django.shortcuts import render
-from .models import Cardio
-from .serializers import CardioSerializer
+from .models import Lift
+from .serializers import LiftSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import serializers, status
@@ -14,41 +14,41 @@ User = get_user_model()
 
 # Create your views here.
 
-class CardioList(APIView):
+class LiftList(APIView):
 
     permission_classes = [AllowAny]
 
     def get(self, request):
-        cardio = Cardio.objects.all()
-        serializer = CardioSerializer(cardio, many=True)
+        lift = Lift.objects.all()
+        serializer = LiftSerializer(lift, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = CardioSerializer(data=request.data)
+        serializer = LiftSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class CardioDetail(APIView):
+class LiftDetail(APIView):
 
     permission_classes = [AllowAny]
     
     def get_object(self, pk):
         try:
-            return Cardio.objects.get(pk=pk)
-        except Cardio.DoesNotExist:
+            return Lift.objects.get(pk=pk)
+        except Lift.DoesNotExist:
             raise Http404
 
     def put(self, request, pk):
-        cardio = self.get_object(pk)
-        serializer = CardioSerializer(cardio, data=request.data)
+        lift = self.get_object(pk)
+        serializer = LiftSerializer(lift, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response (serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        cardio = self.get_object(pk)
-        cardio.delete()
+        lift = self.get_object(pk)
+        lift.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

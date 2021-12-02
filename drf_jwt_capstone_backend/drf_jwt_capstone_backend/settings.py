@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
     'cardio.apps.CardioConfig',
+    'lift.apps.LiftConfig',
+    'prlift.apps.PrliftConfig',
+    'prcardio.apps.PrcardioConfig',
 ]
 
 MIDDLEWARE = [

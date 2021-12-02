@@ -19,4 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
+    path('', include('lift.urls')),
+    path('', include('cardio.urls'))
 ]
