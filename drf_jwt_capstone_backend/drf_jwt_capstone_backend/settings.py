@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'lift.apps.LiftConfig',
     'prlift.apps.PrliftConfig',
     'prcardio.apps.PrcardioConfig',
+    'weight.apps.WeightConfig',
 ]
 
 MIDDLEWARE = [
