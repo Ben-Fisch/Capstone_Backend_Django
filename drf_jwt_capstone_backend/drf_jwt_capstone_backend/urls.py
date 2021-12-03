@@ -20,5 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
     path('', include('lift.urls')),
-    path('', include('cardio.urls'))
+    path('', include('cardio.urls')),
+    # path('', include('prcardio.urls')),
+    path('', include('prlift.urls'))
 ]

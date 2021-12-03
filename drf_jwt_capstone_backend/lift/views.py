@@ -16,7 +16,7 @@ User = get_user_model()
 
 class LiftList(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         lift = Lift.objects.all()
@@ -32,13 +32,18 @@ class LiftList(APIView):
 
 class LiftDetail(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get_object(self, pk):
         try:
             return Lift.objects.get(pk=pk)
         except Lift.DoesNotExist:
             raise Http404
+
+    def get(self, request, pk):
+        lift = self.get_object(pk)
+        serializer = LiftSerializer(lift)
+        return Response(serializer.data)
 
     def put(self, request, pk):
         lift = self.get_object(pk)

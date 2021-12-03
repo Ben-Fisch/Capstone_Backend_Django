@@ -5,4 +5,4 @@ from .models import Lift
 class LiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lift
-        fields = ['date', 'activity', 'reps', 'weight']
+        fields = ['id', 'date', 'activity', 'reps', 'weight', 'user']

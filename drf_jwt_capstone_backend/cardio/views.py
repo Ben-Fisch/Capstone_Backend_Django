@@ -16,7 +16,7 @@ User = get_user_model()
 
 class CardioList(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         cardio = Cardio.objects.all()
@@ -32,13 +32,18 @@ class CardioList(APIView):
 
 class CardioDetail(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get_object(self, pk):
         try:
             return Cardio.objects.get(pk=pk)
         except Cardio.DoesNotExist:
             raise Http404
+
+    def get(self, request, pk):
+        cardio = self.get_object(pk)
+        serializer = CardioSerializer(cardio)
+        return Response(serializer.data)
 
     def put(self, request, pk):
         cardio = self.get_object(pk)

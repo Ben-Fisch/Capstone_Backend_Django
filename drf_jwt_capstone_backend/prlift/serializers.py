@@ -5,4 +5,4 @@ from .models import PRLift
 class PRLiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = PRLift
-        fields = ['date', 'activity', 'reps', 'weight']
+        fields = ['id', 'date', 'activity', 'reps', 'weight', 'user']

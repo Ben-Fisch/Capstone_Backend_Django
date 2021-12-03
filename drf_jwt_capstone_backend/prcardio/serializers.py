@@ -5,4 +5,4 @@ from .models import PRCardio
 class PRCardioSerializer(serializers.ModelSerializer):
     class Meta:
         model = PRCardio
-        fields = ['date', 'activity', 'distance', 'time']
+        fields = ['id', 'date', 'activity', 'distance', 'time', 'user']
