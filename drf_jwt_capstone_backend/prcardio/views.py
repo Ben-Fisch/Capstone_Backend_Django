@@ -16,7 +16,7 @@ User = get_user_model()
 
 class PRCardioList(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         pr_cardio = PRCardio.objects.all()
@@ -32,7 +32,7 @@ class PRCardioList(APIView):
 
 class PRCardioDetail(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get_object(self, pk):
         try:

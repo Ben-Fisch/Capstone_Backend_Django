@@ -16,7 +16,7 @@ User = get_user_model()
 
 class PRLiftList(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         pr_lift = PRLift.objects.all()
@@ -32,7 +32,7 @@ class PRLiftList(APIView):
 
 class PRLiftDetail(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get_object(self, pk):
         try:

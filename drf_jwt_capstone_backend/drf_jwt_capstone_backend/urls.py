@@ -19,9 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
-    path('', include('lift.urls')),
-    path('', include('cardio.urls')),
-    path('', include('prcardio.urls')),
-    path('', include('prlift.urls')),
-    path('', include('weight.urls'))
+    path('api/lift/', include('lift.urls')),
+    path('api/cardio/', include('cardio.urls')),
+    path('api/prcardio/', include('prcardio.urls')),
+    path('api/prlift/', include('prlift.urls')),
+    path('api/weight/', include('weight.urls'))
 ]

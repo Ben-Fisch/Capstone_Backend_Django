@@ -16,7 +16,7 @@ User = get_user_model()
 
 class WeightList(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         weight = Weight.objects.all()
@@ -32,7 +32,7 @@ class WeightList(APIView):
 
 class WeightDetail(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get_object(self, pk):
         try:
